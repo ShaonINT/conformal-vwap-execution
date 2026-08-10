@@ -1,0 +1,22 @@
+# environments
+.venv/
+venv/
+env/
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+
+# third-party checkouts (e.g. ABIDES)
+third_party/
+
+# RL training artefacts
+runs/
+tb_logs/
+*.zip
+
+# os
+.DS_Store
+Thumbs.db

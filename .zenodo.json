@@ -1,0 +1,37 @@
+{
+  "title": "Uncertainty-Aware Execution: Conformal Prediction vs. Reinforcement Learning for Optimal Trade Execution",
+  "description": "<p>Reference implementation and reproducibility package for the paper <em>Uncertainty-Aware AI: Conformal Prediction versus Reinforcement Learning for Optimal Trade Execution</em> (Irshad &amp; Biswas, <em>Statistics, Optimization &amp; Information Computing</em>, 16(2), 1334&ndash;1349, 2026; DOI 10.19139/soic-2310-5070-4159).</p><p>The package contains a self-contained VWAP-execution simulator with stochastic volatility and latent AR(1) return momentum, classical execution schedules (Immediate, TWAP, Almgren&ndash;Chriss, VWAP-tracking), a multi-seed PPO agent, and forecast-driven policies built on a normalised split-conformal predictor of next-interval returns. The central contribution is the use of the conformal interval width as an explicit <em>gate</em> on execution decisions: the policy acts on the return forecast only when its magnitude exceeds kappa times the conformal half-width, and otherwise falls back to VWAP tracking. Sweeping kappa traces a monotone cost&ndash;risk frontier that reduces the variance of execution cost at almost no cost in the mean, and does so more reproducibly than the reinforcement-learning agent.</p><p>All scripts regenerate every table and figure from seed. Simulator-based research; no live-trading claims.</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Irshad, Asadullah",
+      "affiliation": "Centre of Excellence for Data Science, Artificial Intelligence and Modelling (DAIM), University of Hull, United Kingdom"
+    },
+    {
+      "name": "Biswas, Shaon",
+      "affiliation": "Centre of Excellence for Data Science, Artificial Intelligence and Modelling (DAIM), University of Hull, United Kingdom"
+    }
+  ],
+  "keywords": [
+    "optimal trade execution",
+    "VWAP",
+    "conformal prediction",
+    "uncertainty quantification",
+    "reinforcement learning",
+    "Markov decision process",
+    "market microstructure",
+    "distribution-free inference",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.19139/soic-2310-5070-4159",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    }
+  ],
+  "language": "eng"
+}

@@ -1,0 +1,76 @@
+\documentclass[times]{iapress}
+
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+
+\def\volumeyear{202x}
+\def\volumenumber{x}
+\def\volumemonth{Month}
+\setcounter{page}{00}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{longtable,booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage{newunicodechar}
+\renewcommand{\baselinestretch}{1.01}
+
+% ---- Unicode mappings so the manuscript compiles with pdfLaTeX ----
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{⌈}{\ensuremath{\lceil}}
+\newunicodechar{⌉}{\ensuremath{\rceil}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{§}{\S}
+\newunicodechar{¹}{\textsuperscript{1}}
+\newunicodechar{³}{\textsuperscript{3}}
+\newunicodechar{⁰}{\textsuperscript{0}}
+\newunicodechar{⁻}{\textsuperscript{$-$}}
+\newunicodechar{₀}{\textsubscript{0}}
+\newunicodechar{Á}{\'A}
+\newunicodechar{á}{\'a}
+\newunicodechar{é}{\'e}
+\newunicodechar{è}{\`e}
+\newunicodechar{ì}{\`i}
+\newunicodechar{č}{\v{c}}
+\newunicodechar{ū}{\={u}}
+\newunicodechar{ė}{\.{e}}
+
+\begin{document}
+
+\runningheads{Uncertainty-aware trade execution for VWAP-benchmarked order scheduling}{A. Irshad and S. Biswas}
+
+\title{Uncertainty-Aware Trade Execution: Conformal Gating versus Reinforcement Learning for VWAP-Benchmarked Order Scheduling}
+
+\author{Asadullah Irshad \affil{1}\corrauth,
+   Shaon Biswas \affil{1}
+ }
+
+\address{
+\affilnum{1}Centre of Excellence for Data Science, Artificial Intelligence and Modelling (DAIM), University of Hull, UK
+}
+
+\corraddr{Asadullah Irshad (Email: asadullahirshad3@gmail.com). Centre of Excellence for Data Science, Artificial Intelligence and Modelling (DAIM), University of Hull, UK.}
+
+\begin{abstract}
+Optimal trade execution, the problem of scheduling a large parent order over a trading session so as to minimise cost against a benchmark, is a sequential decision task that appears well suited to learning-based control. Yet a good deal of the reported progress fails to reproduce. We study the volume-weighted average price (VWAP) execution problem in a controlled and fully reproducible simulator with stochastic volatility and AR(1) return momentum. Within a single Markov decision process formulation, we compare classical schedules (TWAP, Almgren--Chriss, VWAP-tracking), a proximal-policy-optimisation (PPO) agent, and forecast-driven policies built on a normalised split-conformal predictor of next-interval returns. The predictor attains valid marginal coverage, 90.2\% empirical at a 90\% nominal level. Acting on its point forecast lowers mean slippage below VWAP-tracking but inflates cost variance. Gating those bets by the conformal interval half-width instead yields a tunable and monotone reduction of cost variability, from 19.1 to 10.0 bps, at negligible mean cost, tracing an explicit cost--risk frontier controlled by a single threshold. The PPO agent, evaluated over three training seeds, is high-variance and does not reliably dominate the simple schedules. In this controlled setting, a distribution-free conformal gate thus offers a more reproducible and interpretable route to uncertainty-aware execution than an off-the-shelf reinforcement-learning agent. All code and the simulator are released. On real intraday data (thirty US large-caps, 5-minute bars) the predictor's coverage transfers closely (90.7\% empirical at the 90\% level) and the variance-reduction effect of gating persists, although the forecast edge itself is small, since real high-frequency returns are only weakly predictable.
+\end{abstract}
+
+\keywords{optimal execution; VWAP; conformal prediction; uncertainty quantification; reinforcement learning; Markov decision process; market microstructure.}
+
+\maketitle
+
+\noindent\footnotesize\emph{Both authors completed the MSc (Distinction) in Artificial Intelligence and Data Science at the University of Hull, affiliated with the DAIM Centre of Excellence. This study was conducted independently and did not receive funding or resources from the Centre.}\normalsize
+\vskip 8pt%
+\noindent{\bf AMS 2010 subject classifications} 91G80, 68T05
+\vskip 8pt%
+\noindent{\bf DOI:} 10.19139/soic-2310-5070-????
+
+\input{body_clean.tex}
+
+\end{document}

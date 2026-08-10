@@ -1,0 +1,32 @@
+{
+  "parent_qty": 50000.0,
+  "direction": "SELL",
+  "n_train": 300,
+  "n_calib": 300,
+  "n_test": 250,
+  "alpha": 0.1,
+  "beta": 260.0,
+  "ac_risk_aversion": 0.1,
+  "kappa_report": [
+    0.5,
+    1.0
+  ],
+  "seed": 0,
+  "params": {
+    "n_intervals": 78,
+    "phi": 0.94,
+    "momentum_vol_bps": 5.0,
+    "mu": 0.0,
+    "sv_persistence": 0.95,
+    "sv_vol_of_vol": 0.55,
+    "base_vol_bps": 22.0,
+    "adv": 1000000.0,
+    "u_shape": 0.6,
+    "vol_noise": 0.0,
+    "start_price": 100.0,
+    "half_spread_bps": 17.0,
+    "fee_bps": 1.0,
+    "eta": 8.0,
+    "gamma": 1.0
+  }
+}

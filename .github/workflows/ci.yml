@@ -1,0 +1,67 @@
+name: reproduce
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    name: regenerate tables and figures
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install scientific core
+        # The RL comparator (torch / stable-baselines3) is deliberately excluded
+        # here: scripts/run_ppo.py takes tens of minutes and is not needed to
+        # reproduce the conformal results. Run it locally with the full
+        # requirements.txt.
+        run: |
+          python -m pip install --upgrade pip
+          pip install "numpy==1.24.4" "pandas==1.5.3" "scipy==1.10.1" \
+                      "scikit-learn==1.3.2" "matplotlib==3.7.5"
+
+      - name: Import check
+        run: |
+          PYTHONPATH=src python -c "import uae; print('uae', uae.__version__)"
+
+      - name: Run experiments
+        run: python scripts/run_experiments.py
+
+      - name: Make figures
+        run: python scripts/make_figures.py
+
+      - name: Check conformal coverage is within tolerance of nominal
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          cov = json.loads(pathlib.Path("results/coverage.json").read_text())
+          emp, nom = cov["empirical_coverage"], cov["nominal_coverage"]
+          print(f"empirical={emp:.4f} nominal={nom:.2f}")
+          if abs(emp - nom) > 0.02:
+              sys.exit(f"coverage {emp:.4f} deviates from nominal {nom:.2f} by more than 2pp")
+          PY
+
+      - name: Check the gate reduces cost variance monotonically
+        run: |
+          python - <<'PY'
+          import pandas as pd, sys
+          fr = pd.read_csv("results/cost_risk_frontier.csv").sort_values("kappa")
+          std = fr["slippage_std_bps"].to_numpy()
+          print(fr.to_string(index=False))
+          if std[-1] >= std[0]:
+              sys.exit("tightening the gate did not reduce cost variance")
+          PY
+
+      - name: Upload regenerated results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results/

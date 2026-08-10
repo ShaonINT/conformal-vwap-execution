@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Uncertainty-Aware Execution: Conformal Prediction vs. Reinforcement Learning"
+abstract: >-
+  Reference implementation and reproducibility package for a study of
+  VWAP-benchmarked optimal trade execution. A normalised split-conformal
+  predictor of next-interval returns is used as an explicit gate on execution
+  decisions: the policy acts on the forecast only when its magnitude exceeds
+  kappa times the conformal half-width, and otherwise tracks VWAP. Sweeping
+  kappa traces a monotone cost-risk frontier, reducing the variance of
+  execution cost at almost no cost in the mean, and more reproducibly than a
+  multi-seed PPO agent.
+type: software
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/ShaonINT/conformal-vwap-execution"
+url: "https://github.com/ShaonINT/conformal-vwap-execution"
+keywords:
+  - optimal trade execution
+  - VWAP
+  - conformal prediction
+  - uncertainty quantification
+  - reinforcement learning
+  - market microstructure
+  - reproducibility
+authors:
+  - family-names: Irshad
+    given-names: Asadullah
+    affiliation: "DAIM, University of Hull, UK"
+  - family-names: Biswas
+    given-names: Shaon
+    affiliation: "DAIM, University of Hull, UK"
+preferred-citation:
+  type: article
+  title: "Uncertainty-Aware AI: Conformal Prediction versus Reinforcement Learning for Optimal Trade Execution"
+  authors:
+    - family-names: Irshad
+      given-names: Asadullah
+      affiliation: "DAIM, University of Hull, UK"
+    - family-names: Biswas
+      given-names: Shaon
+      affiliation: "DAIM, University of Hull, UK"
+  journal: "Statistics, Optimization & Information Computing"
+  publisher:
+    name: "International Academic Press"
+  volume: 16
+  issue: 2
+  start: 1334
+  end: 1349
+  year: 2026
+  month: 8
+  issn: "2310-5070"
+  doi: "10.19139/soic-2310-5070-4159"
+  url: "https://iapress.org/index.php/soic/article/view/4159"
