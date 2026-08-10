@@ -1,6 +1,7 @@
 # Uncertainty-Aware Execution: Conformal Prediction vs. Reinforcement Learning
 
 [![Paper DOI](https://img.shields.io/badge/DOI-10.19139%2Fsoic--2310--5070--4159-blue)](https://doi.org/10.19139/soic-2310-5070-4159)
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21879953.svg)](https://doi.org/10.5281/zenodo.21879953)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Reproduce](https://github.com/ShaonINT/conformal-vwap-execution/actions/workflows/ci.yml/badge.svg)](https://github.com/ShaonINT/conformal-vwap-execution/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -175,8 +176,23 @@ Please cite the paper:
 }
 ```
 
-The software itself is archived on Zenodo and has its own DOI; see
-`CITATION.cff` for the machine-readable version of both.
+To cite this software specifically, use its Zenodo archive:
+
+```bibtex
+@software{irshad2026uae_software,
+  title     = {Uncertainty-Aware Execution: Conformal Prediction vs.
+               Reinforcement Learning for Optimal Trade Execution},
+  author    = {Irshad, Asadullah and Biswas, Shaon},
+  year      = {2026},
+  version   = {1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21879953},
+  url       = {https://doi.org/10.5281/zenodo.21879953}
+}
+```
+
+See `CITATION.cff` for the machine-readable version of both — GitHub's
+"Cite this repository" button reads it directly.
 
 ## License
 
