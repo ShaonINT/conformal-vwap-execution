@@ -1,7 +1,7 @@
 # Uncertainty-Aware Execution: Conformal Prediction vs. Reinforcement Learning
 
 [![Paper DOI](https://img.shields.io/badge/DOI-10.19139%2Fsoic--2310--5070--4159-blue)](https://doi.org/10.19139/soic-2310-5070-4159)
-[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21879953.svg)](https://doi.org/10.5281/zenodo.21879953)
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.<concept-number>.svg)](https://doi.org/10.5281/zenodo.<concept-number>)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Reproduce](https://github.com/ShaonINT/conformal-vwap-execution/actions/workflows/ci.yml/badge.svg)](https://github.com/ShaonINT/conformal-vwap-execution/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -55,9 +55,7 @@ scripts/
   make_figures.py     # cost_risk_frontier.png, coverage.png
   run_ppo.py          # train PPO over seeds, append PPO row to the table
 results/              # generated CSVs and figures
-paper/                # the published article (PDF) and its LaTeX/Word sources
-docs/research_plan.md # the original working research plan
-article/              # a long-form write-up of the result for a general audience
+paper/                # the published article (PDF) and the LaTeX body + figures
 ```
 
 ## Quick start
@@ -186,8 +184,8 @@ To cite this software specifically, use its Zenodo archive:
   year      = {2026},
   version   = {1.0.0},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.21879953},
-  url       = {https://doi.org/10.5281/zenodo.21879953}
+  doi       = {10.5281/zenodo.<concept-number>},
+  url       = {https://doi.org/10.5281/zenodo.<concept-number>}
 }
 ```
 
