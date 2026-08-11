@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" width="1120" height="360" role="img" aria-label="The uncertainty-aware execution pipeline: market state feeds a gradient-boosted return predictor, which feeds a normalised split-conformal interval, whose width gates whether the policy acts on the forecast or tracks VWAP.">
+  <defs>
+    <style>
+      .lbl   { font: 600 15px ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #0b0b0b; }
+      .sub   { font: 400 12.5px ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #52514e; }
+      .mono  { font: 400 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #52514e; }
+      .edge  { font: 600 12.5px ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .cap   { font: 400 12.5px ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #8a8a85; }
+    </style>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8a85"/>
+    </marker>
+    <marker id="ar-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2a78d6"/>
+    </marker>
+    <marker id="ar-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#eb6834"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1120" height="360" fill="#fcfcfb"/>
+
+  <!-- 1. market state -->
+  <rect x="24" y="126" width="168" height="88" rx="10" fill="#f2f1ee" stroke="#dedcd6"/>
+  <text class="lbl" x="108" y="163" text-anchor="middle">Market state</text>
+  <text class="mono" x="108" y="185" text-anchor="middle">x_t</text>
+
+  <path d="M 196 170 L 232 170" stroke="#8a8a85" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- 2. predictor -->
+  <rect x="236" y="126" width="180" height="88" rx="10" fill="#f2f1ee" stroke="#dedcd6"/>
+  <text class="lbl" x="326" y="158" text-anchor="middle">Return predictor</text>
+  <text class="sub" x="326" y="178" text-anchor="middle">gradient-boosted</text>
+  <text class="mono" x="326" y="197" text-anchor="middle">μ̂(x_t)</text>
+
+  <path d="M 420 170 L 456 170" stroke="#8a8a85" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- 3. conformal -->
+  <rect x="460" y="118" width="204" height="104" rx="10" fill="#cde2fb" stroke="#9ec5f4"/>
+  <text class="lbl" x="562" y="150" text-anchor="middle">Split-conformal layer</text>
+  <text class="sub" x="562" y="170" text-anchor="middle">normalised, distribution-free</text>
+  <text class="mono" x="562" y="192" text-anchor="middle">Ĉ = μ̂ ± q̂ · σ̂(x_t)</text>
+  <text class="cap" x="562" y="211" text-anchor="middle">half-width tracks local volatility</text>
+
+  <path d="M 668 170 L 704 170" stroke="#8a8a85" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- 4. gate -->
+  <rect x="708" y="126" width="176" height="88" rx="10" fill="#fbe3d8" stroke="#f3c3ac"/>
+  <text class="lbl" x="796" y="158" text-anchor="middle">Gate</text>
+  <text class="mono" x="796" y="181" text-anchor="middle">|μ̂| &gt; κ · q̂σ̂ ?</text>
+  <text class="cap" x="796" y="200" text-anchor="middle">κ is the risk dial</text>
+
+  <!-- branch: act -->
+  <path d="M 888 152 L 932 152 L 932 78 L 968 78" fill="none" stroke="#2a78d6" stroke-width="1.8" marker-end="url(#ar-b)"/>
+  <text class="edge" x="940" y="66" fill="#2a78d6">yes</text>
+  <rect x="972" y="44" width="128" height="70" rx="10" fill="#fcfcfb" stroke="#2a78d6" stroke-width="1.6"/>
+  <text class="lbl" x="1036" y="72" text-anchor="middle" fill="#2a78d6">Act</text>
+  <text class="sub" x="1036" y="92" text-anchor="middle" fill="#2a78d6">tilt the schedule</text>
+
+  <!-- branch: stand down -->
+  <path d="M 888 188 L 932 188 L 932 262 L 968 262" fill="none" stroke="#eb6834" stroke-width="1.8" marker-end="url(#ar-o)"/>
+  <text class="edge" x="940" y="254" fill="#eb6834">no</text>
+  <rect x="972" y="228" width="128" height="70" rx="10" fill="#fcfcfb" stroke="#eb6834" stroke-width="1.6"/>
+  <text class="lbl" x="1036" y="256" text-anchor="middle" fill="#eb6834">Stand down</text>
+  <text class="sub" x="1036" y="276" text-anchor="middle" fill="#eb6834">track VWAP</text>
+
+  <!-- footnote -->
+  <text class="cap" x="24" y="330">κ = 0 → act on every forecast (Forecast-greedy)   ·   κ large → never act (VWAP-tracking)   ·   in between → keep the confident bets, decline the rest</text>
+</svg>
